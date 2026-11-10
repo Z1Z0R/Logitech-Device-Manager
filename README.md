@@ -10,11 +10,11 @@ exposes through its firmware and Linux backend.
 
 | Device | Available controls on supported models |
 | --- | --- |
-| Mouse | DPI, separate X and Y axes, onboard profiles, polling rate, RGB colors and effects, and Superstrike trigger tuning |
-| Keyboard | Onboard profiles, polling rate, and RGB colors, effects, and speed |
-| Headset | Playback and microphone volume and mute, EQ presets or custom EQ, inactivity power-off, and lighting |
-| Microphone | Input volume and mute, Yeti GX hardware gain, and lighting |
-| Webcam | Exposure, focus, white balance, image adjustments, zoom, pan, tilt, and supported reset actions |
+| Mouse | DPI (including separate X-axis and Y-axis settings) · onboard profiles · polling rate · RGB colors and effects · Superstrike trigger tuning |
+| Keyboard | Onboard profiles · polling rate · RGB colors, effects, and speed |
+| Headset | Volume and mute for playback and microphone · factory presets or custom EQ · inactivity power-off · lighting |
+| Microphone | Input volume and mute · Yeti GX hardware gain · lighting |
+| Webcam | Exposure, focus, and white balance · image adjustments · zoom, pan, and tilt · supported reset actions |
 
 Wireless devices show battery level and charging state when the device reports
 them. Controls vary by model, firmware, and connection type.
@@ -26,9 +26,9 @@ after installing packages that supply udev rules.
 
 | Backend | Used for |
 | --- | --- |
-| [Solaar](https://github.com/pwr-Solaar/Solaar) | HID++ settings and lighting. The bridge was developed against Solaar 1.1.20. |
+| [Solaar](https://github.com/pwr-Solaar/Solaar) | HID++ settings and lighting (developed against Solaar 1.1.20) |
 | `pactl` from `libpulse` | Playback and microphone controls through the active PipeWire-Pulse session |
-| [HeadsetControl](https://github.com/Sapd/HeadsetControl#supported-devices) | Headset hardware features. Use a release with JSON output and the `-d vendor:product` selector. |
+| [HeadsetControl](https://github.com/Sapd/HeadsetControl#supported-devices) | Headset hardware features (requires JSON output and the `-d vendor:product` selector) |
 | `v4l2-ctl` from `v4l-utils` | Webcam discovery and controls |
 
 On Omarchy, the packages can be installed with:
@@ -66,8 +66,9 @@ when space allows and one column on narrower screens. It follows the bar's
 font, text color, background, and transparency.
 
 - **DPI and onboard profiles.** Enter an exact supported DPI and press Enter or
-  Apply. For devices with separate axes, **Link axis DPI** starts off and can be
-  saved across restarts when the device has a stable hardware ID. An active
+  Apply. If your device has separate X-axis and Y-axis DPI settings,
+  **Link axis DPI** starts off. The plugin remembers your choice across
+  restarts when the device has a stable hardware ID. An active
   onboard profile can override manual DPI, polling rate, or lighting. The panel
   marks the applicable settings. Select **Disabled** in **Onboard profile** to
   switch to host control if a manual change does not apply.
