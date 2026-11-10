@@ -12,15 +12,22 @@ Ui.BarWidget {
     implicitWidth: badge.implicitWidth
     implicitHeight: barSize
 
-    readonly property color panelForeground: bar?.barForeground ?? Commons.Color.popups.text
+    readonly property var themeOverrides: Commons.Color.userShellValues ?? ({})
+    readonly property color panelForeground: !themeOverrides["popups.text"] && themeOverrides["bar.text"]
+        ? Commons.Color.bar.text : Commons.Color.popups.text
     readonly property string panelFont: bar?.fontFamily || Commons.Style.font.family
     readonly property color panelBackground: {
-        const background = bar?.background ?? Commons.Color.popups.background
+        const popup = Commons.Color.popups.background
+        const barColor = Commons.Color.bar.background
         const mode = bar?.shell?.barConfig?.background
         if (bar?.transparent || mode === "none") return "transparent"
-        if (mode === "glassy")
-            return Qt.rgba(background.r, background.g, background.b, Math.min(background.a, 0.35))
-        return background
+        const background = !themeOverrides["popups.background"] && themeOverrides["bar.background"]
+            ? barColor : popup
+        // Resolve color and alpha independently so a color override preserves theme opacity.
+        const alpha = themeOverrides["popups.background-alpha"] ? popup.a
+            : themeOverrides["bar.background-alpha"] ? barColor.a
+            : mode === "glassy" ? Math.min(popup.a, 0.35) : popup.a
+        return Qt.rgba(background.r, background.g, background.b, alpha)
     }
 
     // KeyboardPanel in Omarchy 4.5 does not expose its card fill as a property.

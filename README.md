@@ -63,7 +63,11 @@ To hide the widget, run `omarchy plugin disable logitech-device-manager`.
 Click the Logitech icon in the bar. Each device starts collapsed. Click its
 divider or arrow to reveal its settings. The panel uses two settings columns
 when space allows and one column on narrower screens. It follows the bar's
-font, text color, background, and transparency.
+font and uses the theme's popup colors by default. In
+`~/.config/omarchy/shell.toml`, explicit `[popups]` values for background color,
+opacity, and text take priority. For each of those values, an explicit `[bar]`
+override also applies if there is no corresponding popup override. Clear bar
+mode keeps the panel background transparent.
 
 - **DPI and onboard profiles.** Enter an exact supported DPI and press Enter or
   Apply. If your device has separate X-axis and Y-axis DPI settings,
