@@ -19,14 +19,12 @@ Ui.BarWidget {
     readonly property color panelBackground: {
         const popup = Commons.Color.popups.background
         const barColor = Commons.Color.bar.background
-        const mode = bar?.shell?.barConfig?.background
-        if (bar?.transparent || mode === "none") return "transparent"
         const background = !themeOverrides["popups.background"] && themeOverrides["bar.background"]
             ? barColor : popup
         // Resolve color and alpha independently so a color override preserves theme opacity.
         const alpha = themeOverrides["popups.background-alpha"] ? popup.a
             : themeOverrides["bar.background-alpha"] ? barColor.a
-            : mode === "glassy" ? Math.min(popup.a, 0.35) : popup.a
+            : popup.a
         return Qt.rgba(background.r, background.g, background.b, alpha)
     }
 

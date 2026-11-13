@@ -66,8 +66,8 @@ when space allows and one column on narrower screens. It follows the bar's
 font and uses the theme's popup colors by default. In
 `~/.config/omarchy/shell.toml`, explicit `[popups]` values for background color,
 opacity, and text take priority. For each of those values, an explicit `[bar]`
-override also applies if there is no corresponding popup override. Clear bar
-mode keeps the panel background transparent.
+override also applies if there is no corresponding popup override. The bar’s
+clear and glassy modes affect the bar itself.
 
 - **DPI and onboard profiles.** Enter an exact supported DPI and press Enter or
   Apply. If your device has separate X-axis and Y-axis DPI settings,

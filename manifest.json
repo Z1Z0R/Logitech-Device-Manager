@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "logitech-device-manager",
   "name": "Logitech Device Manager",
-  "version": "1.14.6",
+  "version": "1.14.7",
   "author": "Zizor",
   "description": "Manage compatible Logitech mice, keyboards, headsets, microphones, and webcams from the Omarchy bar.",
   "kinds": ["bar-widget"],
